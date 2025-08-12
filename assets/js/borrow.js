@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 window.onload = () => {
   const borrowForm = document.getElementById('borrow-form');
   const bookTitleInput = document.getElementById('book-title');
