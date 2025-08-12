@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const userId = user.id;
 
   try {
-    const response = await fetch(`http://127.0.0.1:5000/api/borrows/user/${userId}`, {
+    const response = await fetch(`http://127.0.0.1:8080/api/borrows/user/${userId}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
