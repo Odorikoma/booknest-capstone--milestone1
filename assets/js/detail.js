@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
   const container = document.getElementById('book-detail-content');
   const params = new URLSearchParams(window.location.search);
