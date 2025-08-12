@@ -16,7 +16,7 @@ window.onload = () => {
   // 从后端加载图书
   const loadBooks = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/books')
+      const res = await fetch('http://127.0.0.1:8080/api/books')
       const data = await res.json()
       if (data.success) {
         books = data.data
@@ -79,13 +79,13 @@ window.onload = () => {
     try {
       let response
       if (id) {
-        response = await fetch(`http://127.0.0.1:5000/api/books/${id}`, {
+        response = await fetch(`http://127.0.0.1:8080/api/books/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         })
       } else {
-        response = await fetch('http://127.0.0.1:5000/api/books', {
+        response = await fetch('http://127.0.0.1:8080/api/books', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
@@ -119,7 +119,7 @@ window.onload = () => {
     if (target.classList.contains('delete-btn')) {
       if (confirm('Are you sure you want to delete this book?')) {
         try {
-          const response = await fetch(`http://127.0.0.1:5000/api/books/${bookId}`, { method: 'DELETE' })
+          const response = await fetch(`http://127.0.0.1:8080/api/books/${bookId}`, { method: 'DELETE' })
           const result = await response.json()
           if (result.success) {
             await loadBooks()
