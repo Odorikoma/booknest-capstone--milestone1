@@ -20,7 +20,7 @@ window.onload = () => {
   // 请求后端接口，获取书籍详情并显示书名
   const fetchBookTitle = async (bookId) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8080/api/books/${bookId}`);
+      const response = await fetch(`${API_BASE_URL}/api/books/${bookId}`);
       const result = await response.json();
       if (result.success && result.data) {
         bookTitleInput.value = result.data.title;
@@ -48,7 +48,7 @@ window.onload = () => {
     const borrowDate = new Date().toISOString().slice(0, 10);
 
     try {
-      const response = await fetch('http://127.0.0.1:8080/api/borrows', {
+      const response = await fetch('${API_BASE_URL}/api/borrows', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
