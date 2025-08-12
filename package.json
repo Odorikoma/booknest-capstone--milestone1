@@ -3,7 +3,7 @@
   "private": true,
   "engines": { "node": ">=18" },
   "scripts": {
-    "prestart": "node node_modules/replace-in-file/bin/cli.js \"http://127.0.0.1:5000\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"http://localhost:5000\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"http://127.0.0.1:5500\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"http://localhost:5500\" \"$API_BASE_URL\" assets/js/**/*.js",
+    "prestart": "node node_modules/replace-in-file/bin/cli.js \"http://127.0.0.1:5000\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"http://localhost:5000\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"http://127.0.0.1:5500\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"http://localhost:5500\" \"$API_BASE_URL\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"\\\"/api/\" \"\\\"$API_BASE_URL/api/\" assets/js/**/*.js && node node_modules/replace-in-file/bin/cli.js \"'/api/\" \"'$API_BASE_URL/api/\" assets/js/**/*.js",
     "start": "serve -s . -l $PORT"
   },
   "dependencies": {
