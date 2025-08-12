@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (title) params.append('title', title);
       if (author) params.append('author', author);
 
-      const response = await fetch(`http://localhost:8080/api/books?${params.toString()}`);
+      const response = await fetch(`${API_BASE_URL}/api/books?${params.toString()}`);
       const data = await response.json();
 
       if (!data.success) throw new Error(data.message || 'Failed to fetch books.');
