@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 window.addEventListener('DOMContentLoaded', () => {
   const guestLinks = document.getElementById('guest-links')
   const userLinks = document.getElementById('user-links')
