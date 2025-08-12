@@ -77,7 +77,7 @@ window.onload = () => {
   const loadBooks = async () => {
     try {
       // 注意这里使用 /api 前缀，部署时会被替换成完整后端地址
-      const res = await fetch(`${API_BASE_URL}/books`, {
+      const res = await fetch(`${API_BASE_URL}/api/books`, {
         credentials: 'include'  // 如果你的后端需要 cookie，可保留；否则可以去掉
       });
 
