@@ -1,4 +1,4 @@
-const apiBase = 'http://localhost:8080/api';
+const apiBase = '${API_BASE_URL}/api';
 
 async function fetchRequests() {
   try {
