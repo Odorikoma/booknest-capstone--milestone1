@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const bookGrid = document.getElementById('book-grid');
   const searchInput = document.getElementById('search-input');
