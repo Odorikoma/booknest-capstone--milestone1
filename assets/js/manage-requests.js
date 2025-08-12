@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 const apiBase = '${API_BASE_URL}/api';
 
 async function fetchRequests() {
