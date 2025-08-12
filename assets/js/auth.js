@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 window.onload = () => {
   const showLoginBtn = document.getElementById('show-login-btn');
   const showRegisterBtn = document.getElementById('show-register-btn');
