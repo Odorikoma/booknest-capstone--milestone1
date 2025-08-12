@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchUsers(query) {
     try {
-      const res = await fetch(`http://localhost:5000/api/users?query=${encodeURIComponent(query)}`);
+      const res = await fetch(`http://localhost:8080/api/users?query=${encodeURIComponent(query)}`);
       if (!res.ok) throw new Error('Failed to fetch users');
       const data = await res.json();
       if (!data.success) throw new Error(data.message || 'API error');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchUserHistory(userId) {
     try {
-      const res = await fetch(`http://localhost:5000/api/borrows/user/${userId}`);
+      const res = await fetch(`http://localhost:8080/api/borrows/user/${userId}`);
       if (!res.ok) throw new Error('Failed to fetch borrowing history');
       const data = await res.json();
       if (!data.success) throw new Error(data.message || 'API error');
