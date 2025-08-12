@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('user-search-input');
   const searchBtn = document.getElementById('user-search-btn');
