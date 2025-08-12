@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './config.js';
+
 window.onload = () => {
   const adminBookList = document.getElementById('admin-book-list')
   const addBookBtn = document.getElementById('add-book-btn')
