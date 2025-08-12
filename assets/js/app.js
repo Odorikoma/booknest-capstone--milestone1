@@ -1,6 +1,5 @@
-// assets/js/app.js
-// 如果用了 Railway 的 replace-in-file，把 '/api' 会替换成 'https://你的后端域名/api'
-const API_BASE_URL = '/api';
+import { API_BASE_URL } from './config.js';
+
 
 window.onload = () => {
   // ---- DOM ----
