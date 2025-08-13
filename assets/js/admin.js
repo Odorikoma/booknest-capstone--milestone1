@@ -18,7 +18,7 @@ window.onload = () => {
   // 从后端加载图书
   const loadBooks = async () => {
     try {
-      const res = await fetch('${API_BASE_URL}/api/books')
+      const res = await fetch(`${API_BASE_URL}/api/books`)
       const data = await res.json()
       if (data.success) {
         books = data.data
