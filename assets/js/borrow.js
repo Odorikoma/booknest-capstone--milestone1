@@ -50,7 +50,7 @@ window.onload = () => {
     const borrowDate = new Date().toISOString().slice(0, 10);
 
     try {
-      const response = await fetch('${API_BASE_URL}/api/borrows', {
+      const response = await fetch(`${API_BASE_URL}/api/borrows`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
