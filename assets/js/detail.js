@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const book = data.data;
 
+    console.log('Book detail data:', book);
+
     // 渲染书籍详情
     container.innerHTML = `
       <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
