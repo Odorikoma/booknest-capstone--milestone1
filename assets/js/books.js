@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="mt-2 text-sm text-gray-700">${book.description || ''}</p>
         <p class="mt-2 text-sm text-gray-600">Stock: <span class="font-semibold">${book.stock}</span></p>
         <div class="mt-4 flex justify-between">
-          <a href="borrow.html?id=${book.id}" class="text-indigo-600 hover:underline text-sm font-medium">Borrow</a>
-          <a href="book-detail.html?id=${book.id}" class="text-blue-600 hover:underline text-sm font-medium">Detail</a>
+          <a href="https://booknest-app.up.railway.app/borrow.html?id=${book.id}" class="text-indigo-600 hover:underline text-sm font-medium">Borrow</a>
+          <a href="https://booknest-app.up.railway.app/book-detail.html?id=${book.id}" class="text-blue-600 hover:underline text-sm font-medium">Detail</a>
         </div>
       </div>
     `;
