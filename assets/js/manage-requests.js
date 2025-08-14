@@ -5,7 +5,7 @@ const apiBase = `${API_BASE_URL}/api`;
 async function fetchRequests() {
   try {
     // 请求时带上status=requested，过滤出待审批的请求
-    const res = await fetch(`${apiBase}/borrows?status=requested`);
+    const res = await fetch(`${apiBase}/borrows?borrow_status=requested`);
     const data = await res.json();
     if (!data.success) throw new Error(data.message || 'Failed to load requests.');
     renderRequests(data.data);
