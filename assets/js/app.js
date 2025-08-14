@@ -38,7 +38,7 @@ window.onload = () => {
           <span class="text-sm font-semibold ${Number(book.stock) > 0 ? 'text-green-600' : 'text-red-600'}">
             ${Number(book.stock) > 0 ? `${book.stock} in stock` : 'Out of stock'}
           </span>
-          <a href="book-detail.html?id=${encodeURIComponent(book.id)}" class="text-primary hover:underline">
+          <a href="/book-detail.html?id=${encodeURIComponent(book.id)}" class="text-primary hover:underline">
             View Details
           </a>
         </div>
