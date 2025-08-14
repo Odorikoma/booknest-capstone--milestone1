@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json();
       if (!data.success) throw new Error(data.message || 'API error');
       // 只显示 borrowed 和 returned 状态的记录，忽略请求状态等
-      return data.data.filter(record => ['borrowed', 'returned'].includes(record.status));
+      return data.data.filter(record => ['borrowed', 'returned'].includes(record.borrow_status));
     } catch (err) {
       console.error(err);
       return [];
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusClass = 'bg-green-100 text-green-800';
       }
 
-      const statusText = record.status.charAt(0).toUpperCase() + record.status.slice(1);
+      const statusText = record.borrow_status.charAt(0).toUpperCase() + record.borrow_status.slice(1);
 
       const rowHTML = `
         <tr>
