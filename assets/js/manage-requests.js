@@ -43,10 +43,10 @@ function renderRequests(requests) {
       // 审批操作approve：status设为borrowed，拒绝deny：status设为returned（逻辑可改）
       let statusToSet = action === 'approve' ? 'borrowed' : 'returned';
       try {
-        const res = await fetch(`${apiBase}/borrows/${borrowId}/status`, {
+        const res = await fetch(`${apiBase}/borrows/${borrowId}/borrow_status`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status: statusToSet })
+          body: JSON.stringify({ borrow_status: statusToSet })
         });
         const resp = await res.json();
         if (!resp.success) throw new Error(resp.message || 'Failed to update status.');
