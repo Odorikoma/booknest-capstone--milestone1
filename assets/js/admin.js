@@ -87,7 +87,7 @@ window.onload = () => {
           body: JSON.stringify(payload)
         })
       } else {
-        response = await fetch('${API_BASE_URL}/api/books', {
+        response = await fetch(`${API_BASE_URL}/api/books`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
