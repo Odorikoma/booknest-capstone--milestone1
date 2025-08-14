@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <td class="px-6 py-4 whitespace-nowrap">${returnDate}</td>
         <td class="px-6 py-4 whitespace-nowrap">
           <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
-            ${borrow.status.charAt(0).toUpperCase() + borrow.status.slice(1)}
+            ${borrow.status.charAt(0).toUpperCase() + borrow.borrow_status.slice(1)}
           </span>
         </td>
       `;
