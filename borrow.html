@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BookNest - Borrow Book</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-md sticky top-0 z-10">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-bold">BookNest</a>
+      <div class="flex items-center space-x-4">
+
+        <!-- 所有人都能看到的链接 -->
+        <a href="index.html" class="hover:text-gray-300">Browse</a>
+        <a href="my-history.html" class="hover:text-gray-300">My History</a>
+
+        <!-- 未登录显示 -->
+        <div id="guest-links" class="flex space-x-2">
+          <a href="account.html" id="account-link" class="bg-white text-primary px-4 py-2 rounded-md hover:bg-gray-200">
+            Login / Register
+          </a>
+        </div>
+
+        <!-- 已登录显示 -->
+        <div id="user-links" class="hidden flex space-x-2 items-center">
+          <span id="welcome-user" class="text-white font-semibold"></span>
+          <button id="logout-btn" class="bg-white text-primary px-4 py-2 rounded-md hover:bg-gray-200 cursor-pointer">Logout</button>
+        </div>
+
+        <!-- 管理员专属 -->
+        <a href="admin/manage-books.html" id="admin-link" class="hover:text-gray-300 hidden">Admin</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-8 flex justify-center items-center" style="min-height: calc(100vh - 150px);">
+    <div class="w-full max-w-lg">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Borrow Application</h1>
+        <form id="borrow-form" class="space-y-6">
+          <div>
+            <label for="book-title" class="block text-sm font-medium text-gray-700">Book Title</label>
+            <input type="text" id="book-title" readonly
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100" />
+          </div>
+          <div>
+            <label for="borrower-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" id="borrower-name" required
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+          </div>
+          <div>
+            <label for="borrow-date" class="block text-sm font-medium text-gray-700">Borrow Date</label>
+            <input type="date" id="borrow-date" required
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+          </div>
+          <button type="submit"
+            class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-purple-700">Submit Application</button>
+        </form>
+        <div id="form-feedback" class="mt-4 text-center"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white mt-12 fixed bottom-0 w-full">
+    <div class="container mx-auto px-6 py-4 text-center">
+      <p>&copy; 2025 BookNest. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/borrow.js"></script>
+</body>
+
+</html>

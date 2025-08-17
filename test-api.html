@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <div id="results"></div>
+
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script>
+        async function testAPI() {
+            const results = document.getElementById('results');
+            
+            try {
+                // 测试健康检查
+                results.innerHTML += '<h3>Testing Health Check...</h3>';
+                const healthResponse = await fetch(window.CONFIG.HEALTH_ENDPOINT);
+                const healthData = await healthResponse.json();
+                results.innerHTML += `<p>Health: ${JSON.stringify(healthData)}</p>`;
+                
+                // 测试登录
+                results.innerHTML += '<h3>Testing Login...</h3>';
+                const loginResponse = await fetch(window.CONFIG.AUTH_ENDPOINTS.login, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@booknest.com',
+                        password: '123456'
+                    })
+                });
+                const loginData = await loginResponse.json();
+                results.innerHTML += `<p>Login: ${JSON.stringify(loginData)}</p>`;
+                
+                if (loginData.success && loginData.access_token) {
+                    localStorage.setItem('token', loginData.access_token);
+                    localStorage.setItem('user', JSON.stringify(loginData.data));
+                    
+                    // 测试借阅历史
+                    results.innerHTML += '<h3>Testing Borrow History...</h3>';
+                    const userId = loginData.data.id;
+                    const { response, data } = await window.apiRequest(
+                        window.CONFIG.BORROW_ENDPOINTS.userHistory(userId)
+                    );
+                    results.innerHTML += `<p>Borrow History: ${JSON.stringify(data)}</p>`;
+                    
+                    // 测试用户搜索
+                    results.innerHTML += '<h3>Testing User Search...</h3>';
+                    const { response: searchResponse, data: searchData } = await window.apiRequest(
+                        `${window.CONFIG.USER_ENDPOINTS.search}?query=admin`
+                    );
+                    results.innerHTML += `<p>User Search: ${JSON.stringify(searchData)}</p>`;
+                }
+                
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+                console.error(error);
+            }
+        }
+        
+        // 页面加载后执行测试
+        document.addEventListener('DOMContentLoaded', testAPI);
+    </script>
+</body>
+</html>

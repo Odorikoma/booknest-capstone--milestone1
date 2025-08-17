@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookNest - Book Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-md sticky top-0 z-10">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-bold">
+        BookNest
+      </a>
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="hover:text-gray-300">Browse</a>
+        <a href="my-history.html" class="hover:text-gray-300">My History</a>
+        <!-- 未登录显示区 -->
+        <div id="guest-links" class="flex items-center">
+          <a href="account.html" id="login-register-link" class="bg-white text-primary px-4 py-2 rounded-md hover:bg-gray-200">
+            Login / Register
+          </a>
+        </div>
+
+        <!-- 已登录显示区 -->
+        <div id="user-links" class="hidden flex items-center space-x-4">
+          <span id="welcome-user" class="text-white"></span>
+          <button id="logout-btn" class="bg-white text-primary px-4 py-2 rounded-md hover:bg-gray-200 cursor-pointer">Logout</button>
+        </div>
+
+        <a href="admin/manage-books.html" id="admin-link" class="hover:text-gray-300 hidden">Admin</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-8">
+    <div id="book-detail-content" class="bg-white p-8 rounded-lg shadow-md">
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white mt-12 fixed bottom-0 w-full">
+    <div class="container mx-auto px-6 py-4 text-center">
+      <p>&copy; 2025 BookNest. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/detail.js"></script>
+</body>
+
+</html>
