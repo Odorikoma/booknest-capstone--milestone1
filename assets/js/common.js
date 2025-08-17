@@ -88,8 +88,12 @@ window.apiRequest = async (url, options = {}) => {
       console.log('响应数据:', data);
     } catch (jsonError) {
       console.error('解析JSON失败:', jsonError);
-      console.log('响应文本:', await response.text());
-      throw new Error('Server returned invalid JSON data');
+      // 创建一个带有错误信息的对象
+      data = { 
+        success: false, 
+        message: 'Server returned invalid JSON data',
+        error: jsonError.message 
+      };
     }
 
     // 如果token过期或无效，重定向到登录页
@@ -124,8 +128,8 @@ window.showLoading = (element) => {
   }
 };
 
-// 显示错误信息
-window.showError = (element, message) => {
+// 显示错误信息 (只用于元素内容)
+window.showElementError = (element, message) => {
   if (element) {
     element.innerHTML = `<div class="text-red-500 text-center">${message}</div>`;
   }

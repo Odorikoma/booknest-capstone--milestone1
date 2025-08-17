@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok && data.success) {
                 displayBooks(data.data);
             } else {
-                window.showError?.(booksContainer, data.message || 'Failed to load books');
+                window.showElementError?.(booksContainer, data.message || 'Failed to load books');
             }
         } catch (error) {
             console.error('Error loading books:', error);
-            window.showError?.(booksContainer, 'Network error while loading books');
+            window.showElementError?.(booksContainer, 'Network error while loading books');
         }
     };
 

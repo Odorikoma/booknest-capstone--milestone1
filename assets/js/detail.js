@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok && data.success) {
                 displayBookDetail(data.data);
             } else {
-                window.showError?.(bookDetailContainer, data.message || 'Failed to load book details');
+                window.showElementError?.(bookDetailContainer, data.message || 'Failed to load book details');
             }
         } catch (error) {
             console.error('Error loading book detail:', error);
-            window.showError?.(bookDetailContainer, 'Network error while loading book details');
+            window.showElementError?.(bookDetailContainer, 'Network error while loading book details');
         }
     };
 
@@ -135,6 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bookId) {
         loadBookDetail(bookId);
     } else {
-        window.showError?.(bookDetailContainer, 'Book ID not found in URL');
+        window.showElementError?.(bookDetailContainer, 'Book ID not found in URL');
     }
 });

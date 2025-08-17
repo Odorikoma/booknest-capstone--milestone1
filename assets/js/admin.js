@@ -85,41 +85,76 @@ window.onload = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    
+    console.log('\n=== 编辑表单提交开始 ===');
     const id = bookIdInput.value;
+    console.log('图书ID:', id || '新建图书');
+    
+    // 验证必填字段
+    if (!titleInput.value.trim() || !authorInput.value.trim() || !descInput.value.trim()) {
+      await showError('Please fill in all required fields (Title, Author, Description)');
+      return;
+    }
+    
+    const stock = parseInt(stockInput.value, 10);
+    const price = parseFloat(priceInput.value);
+    
+    if (isNaN(stock) || stock < 0) {
+      await showError('Stock must be a valid non-negative number');
+      return;
+    }
+    
+    if (isNaN(price) || price < 0) {
+      await showError('Price must be a valid non-negative number');
+      return;
+    }
+    
     const payload = {
-      title: titleInput.value,
-      author: authorInput.value,
-      description: descInput.value,
-      stock: parseInt(stockInput.value, 10),
-      price: parseFloat(priceInput.value) || 0.0,
-      cover_image_url: coverUrlInput?.value || null
+      title: titleInput.value.trim(),
+      author: authorInput.value.trim(),
+      description: descInput.value.trim(),
+      stock: stock,
+      price: price,
+      cover_image_url: (coverUrlInput && coverUrlInput.value.trim()) || null
     };
+    
+    console.log('提交数据:', payload);
 
     try {
       let url, method;
       if (id) {
         url = window.CONFIG.BOOK_ENDPOINTS.update(id);
         method = 'PUT';
+        console.log('执行更新操作');
       } else {
         url = window.CONFIG.BOOK_ENDPOINTS.create;
         method = 'POST';
+        console.log('执行创建操作');
       }
+      
+      console.log('请求URL:', url);
+      console.log('请求方法:', method);
 
       const { response, data } = await window.apiRequest(url, {
         method: method,
         body: JSON.stringify(payload)
       });
 
+      console.log('服务器响应:', { response, data });
+
       if (response.ok && data.success) {
+        console.log('操作成功，重新加载图书列表');
         await loadBooks();
         closeModal();
         await showSuccess(id ? 'Book updated successfully!' : 'Book created successfully!');
+        console.log('=== 编辑表单提交成功 ===\n');
       } else {
+        console.error('操作失败:', data);
         await showError(data.message || 'Failed to save book');
       }
     } catch (err) {
       console.error('Submit error:', err);
-      await showError('Error occurred while saving book');
+      await showError('Error occurred while saving book: ' + err.message);
     }
   };
 
